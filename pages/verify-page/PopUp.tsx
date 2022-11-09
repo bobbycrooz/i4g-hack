@@ -48,7 +48,7 @@ function Info({ click, data }: { click: any; data: any }) {
 
 				<div className="button_box w-full">
 					<button
-						onClick={(p) => click((p: any) => !p)}
+						onClick={() => click(2)}
 						className="btn light middle w-full centered"
 					>
 						Connect to Authect
@@ -101,7 +101,7 @@ function Details({ click, data }: { click: any; data: any }) {
 
 				<div className="button_box w-full">
 					<button
-						onClick={(p) => click((p: any) => !p)}
+						onClick={() => click(3)}
 						className="btn light middle w-full centered"
 					>
 						Connect
@@ -125,12 +125,11 @@ function CampaignCreated({ click }: { click: any }) {
 			<div className="details_box   space-y-4">
 				<h1 className="big-body capitalize text-center">Verification Process Completed</h1>
 
-			
 				{/*  */}
 
 				<div className="button_box w-full">
 					<button
-						onClick={(p) => click((p: any) => !p)}
+						onClick={() => click(3)}
 						className="btn light middle w-full centered"
 					>
 						Copy Campaign Code
@@ -146,6 +145,7 @@ const PopUp = ({ setshowPopUp }: { setshowPopUp: any }) => {
 	const { user, setUser } = useAuth();
 	const [verificationType, setVT] = React.useState('Select ID Type ');
 	const [isCreating, seIsCreating] = React.useState(true);
+	const [currentMode, setCurrentMode] = React.useState(1);
 	let slackname = 'obby dev';
 	const cardRef = React.useRef(null);
 
@@ -159,14 +159,25 @@ const PopUp = ({ setshowPopUp }: { setshowPopUp: any }) => {
 		return;
 	}
 
+	function toggleMode() {
+		switch (currentMode) {
+			case 1:
+				return <Info data={{ verificationType, setVT }} click={setCurrentMode} />;
+
+			case 2:
+				return <Details data={{ verificationType, setVT }} click={setCurrentMode} />;
+			case 3:
+				return <CampaignCreated click={seIsCreating} />
+
+			default:
+				return <Details data={{ verificationType, setVT }} click={setCurrentMode} />;;
+		}
+	}
+
 	return (
 		<div className="popup fixed flex centered " ref={cardRef} onClick={(e) => backDrop(e)}>
 			<AnimatePresence mode="wait">
-				{isCreating ? (
-					<Details data={{ verificationType, setVT }} click={seIsCreating} />
-				) : (
-					<CampaignCreated click={seIsCreating} />
-				)}
+				{toggleMode()}
 			</AnimatePresence>
 		</div>
 	);

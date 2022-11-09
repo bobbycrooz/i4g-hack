@@ -141,7 +141,7 @@ const Home = (props: { isMobile: any }) => {
 						className="button_box "
 					>
 						<button onClick={() => router.push('/auth')} className="btn light middle ">
-							<p className="mr-4">book a demo</p>
+							<p className="mr-4">Get Started</p>
 
 							<Image src={arrowRight} width={20} height={20} alt="logo" />
 						</button>

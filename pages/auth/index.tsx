@@ -27,7 +27,7 @@ const Home = (props: { isMobile: any }) => {
     }
 
 	return (
-		<div className="auth relative">
+		<div className={`auth ${isLoggingIn && "active"} relative`}>
 			<SEO title="auth" />
 			{/* <Text text="name"/>
 			<Button text='button'/> */}

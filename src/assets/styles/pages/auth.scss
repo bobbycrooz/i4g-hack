@@ -1,38 +1,41 @@
 .auth {
-width: 100%;
-height: 200vh;
-    background-image: linear-gradient(to right,#09A5DB,#001251d2, #001251);
-   
-.background-partern{
-  background-image: url(../../images/bg-pat.svg);
-background-size: cover;
-background-repeat: no-repeat;
-}
+    width: 100%;
+    height: 180vh;
+    background-image: linear-gradient(to right, #09a5db, #001251d2, #001251);
 
+    .background-partern {
+        background-image: url(../../images/bg-pat.svg);
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
 
-input{
-    &:focus{
-        outline: none;
-      }
-}
+    &.active{
+        height: 160vh;
+    }
 
-.hero {
+    input {
+        &:focus {
+            outline: none;
+        }
+    }
+
+    .hero {
         height: calc(100vh - 100px);
-        background-image: url(../../images/hero.png) ;
+        background-image: url(../../images/hero.png);
         background-size: cover;
         @apply bg-dark-blue;
 
-        &_content{
+        &_content {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
             left: 10%;
             @apply p-2;
 
-            p, h1{
+            p,
+            h1 {
                 color: white;
             }
-
         }
     }
 }
