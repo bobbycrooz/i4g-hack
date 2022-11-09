@@ -1,0 +1,27 @@
+.btn {
+    @apply px-6 p-3 rounded-lg font-toma-sb capitalize;
+
+    transition: all 0.4s linear;
+
+    &.light {
+        @apply bg-light-blue text-pri;
+    }
+
+    &.disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+
+    &-ghost {
+    }
+
+    &-pill {
+    }
+
+    &-plus {
+    }
+
+    &.loading {
+    }
+}
+// @apply px-5 p-1 rounded-md text-sm mt-3;

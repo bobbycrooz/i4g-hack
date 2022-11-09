@@ -1,0 +1,139 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+// partials
+@import "../fonts/font";
+@import "partials/animate";
+@import "components/button";
+
+// components
+
+// widgets
+
+// pages
+@import "pages/home.scss";
+@import "pages/auth.scss";
+@import "pages/dashboard.scss";
+
+body {
+  background: #fff;
+  transition: all 0.1s linear;
+}
+
+.br {
+  @apply border border-red-600;
+}
+
+.middle {
+  @apply flex items-center;
+}
+
+.text {
+  @apply font-semibold text-lg text-gray-500;
+
+  &.cap {
+    @apply capitalize;
+  }
+}
+
+.centered {
+  @apply flex items-center justify-center;
+}
+
+.body {
+  @apply text-black font-normal font-toma-reg text-[18px];
+}
+
+.big-body {
+  @apply text-black font-semibold font-toma-reg text-[24px];
+}
+//
+
+input {
+  &:focus {
+    outline: none;
+  }
+}
+
+// popup
+.popup {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  background-color: rgba(0, 0, 0, 0.656);
+
+  .popup_card {
+    // min-height: 520px;
+    height: auto;
+    min-width: 650px;
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      border-radius: 8px 8px 0 0;
+      height: 15px;
+      background-color: #011b78;
+    }
+
+    select {
+      &:focus {
+        outline: none;
+      }
+      option {
+        height: 30px;
+      }
+    }
+  }
+}
+
+
+.input_field-select{
+  position: relative;
+  height: 59px;
+
+  .dropdown{
+    @apply  absolute bg-white rounded-lg p-4;
+    // height: 300px;
+    width: 100%;
+    left: 200px;
+    bottom: 62px;
+    z-index: 9999;
+    box-shadow:  3px 0px 10px 0 rgba(0, 0, 0, 0.205);
+
+   .dropdown_list-wrapper{
+    height: 300px;
+
+    overflow-y: scroll;
+
+    &::-webkit-scrollbar {
+      width: 4px;
+    }
+     
+    &::-webkit-scrollbar-track {
+      box-shadow: inset 0 0 6px #D4D4D4;
+    }
+    
+    &::-webkit-scrollbar-thumb {
+      background-color: #6F6F6F;
+      outline: 1px solid #6F6F6F;
+      
+    }
+   }
+
+    .dropdown_list{
+
+      .list_item{
+    @apply p-3 px-6;
+
+      }
+    }
+
+  }
+}

@@ -1,0 +1,15 @@
+.dashboard {
+    width: 100vw;
+    height: 100vh;
+
+    &_side {
+        background-image: linear-gradient(to right, #09a5db, #001251d2, #001251);
+        width: 313px;
+    height: 100vh;
+
+    }
+
+    &_main {
+        width: calc(100vw - 313px);
+    }
+}
