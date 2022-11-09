@@ -6,9 +6,9 @@ export default function SEO({ title, description = title }: {
     description?: string
 }) {
 	// const domain = 'https://site-domain'
-	const formattedTitle = title && title + " - bobmart";
+	const formattedTitle = title && title + " - authect";
 	// const description = "magnus";
-	const keywords = "bobmrt";
+	const keywords = "authect";
 	// url path
 	// const url = url && url.path ? url.path : undefined
 	// url path to home
