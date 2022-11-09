@@ -15,29 +15,30 @@ import { useAuth } from '@contexts/auth-context';
 import { motion } from 'framer-motion';
 import PopUp from './PopUp';
 import React from 'react';
-import {useRouter} from 'next/router';
+import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 const DashBoard = (props: { isMobile: any }) => {
 	const { user, setUser } = useAuth();
 	const [showPopUp, setshowPopUp] = React.useState(false);
-	const router = useRouter()
+	const router = useRouter();
 
 	const sideNav = [
 		{
 			name: 'home',
-			link: './',
+			link: './dashboard',
 			icon: home
 		},
 
 		{
 			name: 'Campaign',
-			link: './',
+			link: './verify-page',
 			icon: home
 		},
 
 		{
 			name: 'Settings',
-			link: './',
+			link: './dashboard',
 			icon: cog
 		}
 	];
@@ -73,15 +74,19 @@ const DashBoard = (props: { isMobile: any }) => {
 
 			<div className="dashboard_side py-14 px-8 flex flex-col justify-between">
 				<div className="first_tab space-y-8">
-					<div className="logo-box">
+					<Link href={'/'} className="logo-box cursor-pointer">
 						<Image src={Logo} width={150} height={60} alt="logo" />
-					</div>
+					</Link>
 
 					<div className="nav ">
 						<ul className="sidebar_nav_list space-y-4">
 							{sideNav.map((item, index) => (
+
+								<Link href={item.link} key={item.name}>
+
+								
 								<li
-									key={item.name}
+									
 									className={`${
 										item.name === 'home' && 'bg-light-blue'
 									} list_item middle hover:bg-light-blue  font-toma-sb px-6 p-3 rounded-lg`}
@@ -89,6 +94,7 @@ const DashBoard = (props: { isMobile: any }) => {
 									<Image src={item.icon} width={21.33} height={21} alt="logo" />
 									<p className=" capitalize text-white ml-4 text-lg">{item.name}</p>
 								</li>
+								</Link>
 							))}
 						</ul>
 					</div>

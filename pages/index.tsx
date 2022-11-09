@@ -8,12 +8,13 @@ import arrowRight from '@images/arrow-right.svg';
 import green from '@images/green.svg';
 import { useAuth } from '@contexts/auth-context';
 import { motion } from 'framer-motion';
-import {useRouter} from 'next/router';
+import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 const Home = (props: { isMobile: any }) => {
 	const { user, setUser } = useAuth();
 	let slackname = 'obby dev';
-	const router = useRouter()
+	const router = useRouter();
 
 	return (
 		<div className="home">
@@ -22,8 +23,10 @@ const Home = (props: { isMobile: any }) => {
 			<Button text='button'/> */}
 
 			<div className="navbar  h-[100px] bg-white flex items-center justify-between px-[105px]">
-				<div className="logo">
-					<Image src={LogoAnimate} width={127} height={50.8} alt="logo" />
+				<div className="logo-box cursor-pointer">
+					<Link href="/">
+						<Image src={LogoAnimate} width={150} height={60} alt="logo" />
+					</Link>
 				</div>
 
 				<div className="nav-list  p-2">

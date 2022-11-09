@@ -14,7 +14,9 @@
 // pages
 @import "pages/home.scss";
 @import "pages/auth.scss";
+@import "pages/verify.scss";
 @import "pages/dashboard.scss";
+
 
 body {
   background: #fff;
@@ -137,3 +139,7 @@ input {
 
   }
 }
+
+
+
+

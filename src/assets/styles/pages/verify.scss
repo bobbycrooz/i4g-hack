@@ -1,0 +1,15 @@
+.verify {
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(to right, #09a5db, #001251d2, #001251);
+
+    .navbar{
+        z-index: 900px;
+    }
+    .background-partern {
+        background-image: url(../../images/bg-pat.svg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        z-index: 899px;
+    }
+}
