@@ -19,6 +19,7 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 import PopUp from './PopUp';
 
+// @ts-ignore
 const DashBoardLayout = ({ children }) => {
 	const { user, setUser } = useAuth();
 	const [showPopUp, setshowPopUp] = React.useState(false);
