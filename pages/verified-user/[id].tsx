@@ -23,6 +23,10 @@ const DashBoard = (props: { isMobile: any }) => {
 	const { user, setUser } = useAuth();
 	const [showPopUp, setshowPopUp] = React.useState(false);
 	const router = useRouter();
+	const {id} = router.query
+
+	console.log(id);
+	
 
 	const sideNav = [
 		{
@@ -72,7 +76,7 @@ const DashBoard = (props: { isMobile: any }) => {
 			{showPopUp && <PopUp setshowPopUp={setshowPopUp} />}
 			{/* modal */}
 			<div className="info space-y-2">
-				<h1 className="body">Welcome Back</h1>
+				<h1 className="body">Welcome Back {id}</h1>
 
 				<h1 className="big-body">Pandora PLC</h1>
 			</div>

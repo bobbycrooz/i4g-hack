@@ -47,10 +47,7 @@ function Info({ click, data }: { click: any; data: any }) {
 				{/*  */}
 
 				<div className="button_box w-full">
-					<button
-						onClick={() => click(2)}
-						className="btn light middle w-full centered"
-					>
+					<button onClick={() => click(2)} className="btn light middle w-full centered">
 						Connect to Authect
 					</button>
 				</div>
@@ -61,7 +58,7 @@ function Info({ click, data }: { click: any; data: any }) {
 
 function Details({ click, data }: { click: any; data: any }) {
 	const { verificationType, setVT } = data;
-	const [showDropDown, setShow] = React.useState(false);
+	const [hasName, setHasName] = React.useState(false);
 
 	return (
 		<motion.div
@@ -86,25 +83,50 @@ function Details({ click, data }: { click: any; data: any }) {
 					/>
 				</div>
 
+				{/*  */}
+
+				<div className="button_box w-full">
+					<button onClick={() => click(3)} className="btn light middle w-full centered">
+						Continue
+					</button>
+				</div>
+			</div>
+		</motion.div>
+	);
+}
+
+function DetailsID({ click, data }: { click: any; data: any }) {
+	const { verificationType, setVT } = data;
+	const [hasName, setHasName] = React.useState(false);
+
+	return (
+		<motion.div
+			variants={transObj}
+			initial="initial"
+			animate="animate"
+			exit="exit"
+			transition={{ duration: 0.2 }}
+			className="popup_card bg-white rounded-lg p-16 w-[700px] "
+		>
+			<div className="details_box   space-y-8">
+				<h1 className="big-body capitalize ">ID Number</h1>
+
 				<div className="input_box  flex flex-col space-y-3">
 					<label className="body" htmlFor="body">
-						Enter Voter’s Card Number
+						BVN Number
 					</label>
 					<input
-						type="email"
+						type="text"
 						className="input_field p-4 font-toma-reg border border-gray-200 rounded-lg"
-						placeholder="Enter Voter’s Card Number "
+						placeholder="Enter your BVN Number"
 					/>
 				</div>
 
 				{/*  */}
 
 				<div className="button_box w-full">
-					<button
-						onClick={() => click(3)}
-						className="btn light middle w-full centered"
-					>
-						Connect
+					<button onClick={() => click(4)} className="btn light middle w-full centered">
+						Continue
 					</button>
 				</div>
 			</div>
@@ -128,11 +150,8 @@ function CampaignCreated({ click }: { click: any }) {
 				{/*  */}
 
 				<div className="button_box w-full">
-					<button
-						onClick={() => click(3)}
-						className="btn light middle w-full centered"
-					>
-						Copy Campaign Code
+					<button onClick={() => click(false)} className="btn light middle w-full centered">
+						Close
 					</button>
 				</div>
 			</div>
@@ -167,18 +186,18 @@ const PopUp = ({ setshowPopUp }: { setshowPopUp: any }) => {
 			case 2:
 				return <Details data={{ verificationType, setVT }} click={setCurrentMode} />;
 			case 3:
-				return <CampaignCreated click={seIsCreating} />
+				return <DetailsID data={{ verificationType, setVT }} click={setCurrentMode} />;
+			case 4:
+				return <CampaignCreated click={setshowPopUp} />;
 
 			default:
-				return <Details data={{ verificationType, setVT }} click={setCurrentMode} />;;
+				return <Details data={{ verificationType, setVT }} click={setCurrentMode} />;
 		}
 	}
 
 	return (
 		<div className="popup fixed flex centered " ref={cardRef} onClick={(e) => backDrop(e)}>
-			<AnimatePresence mode="wait">
-				{toggleMode()}
-			</AnimatePresence>
+			<AnimatePresence mode="wait">{toggleMode()}</AnimatePresence>
 		</div>
 	);
 };

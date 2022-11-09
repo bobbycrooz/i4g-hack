@@ -46,7 +46,7 @@
 			"@constants": ["constants"],
 
 			"@images/*" :["src/assets/images/*"],
-			"@layout" :["src/interface/layout"],
+			"@layouts/*" :["src/interface/layouts/*"],
 
 			"@widget" :["src/interface/widget"],
 			"@widget/*" :["src/interface/widget/*"],

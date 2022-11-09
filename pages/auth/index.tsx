@@ -10,24 +10,26 @@ import { useAuth } from '@contexts/auth-context';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/router';
 import React from 'react';
+import { FiEye, FiEyeOff } from 'react-icons/fi';
+
 const Home = (props: { isMobile: any }) => {
 	const { user, setUser } = useAuth();
 	let slackname = 'obby dev';
 	const router = useRouter();
 	const [isLoggingIn, setMode] = React.useState(true);
+	const [passMode, setpassMode] = React.useState('password');
 
-
-    function switchMode(){
-        setMode(!isLoggingIn)
-        window.scrollTo({
-            top: 0,
-            // left: 100,
-            behavior: 'smooth'
-        })
-    }
+	function switchMode() {
+		setMode(!isLoggingIn);
+		window.scrollTo({
+			top: 0,
+			// left: 100,
+			behavior: 'smooth'
+		});
+	}
 
 	return (
-		<div className={`auth ${isLoggingIn && "active"} relative`}>
+		<div className={`auth ${isLoggingIn && 'active'} relative`}>
 			<SEO title="auth" />
 			{/* <Text text="name"/>
 			<Button text='button'/> */}
@@ -44,7 +46,7 @@ const Home = (props: { isMobile: any }) => {
 								{isLoggingIn ? 'Login to your account' : 'Create your account'}
 							</h1>
 
-							<p className="body">
+							<p className="body mt-3">
 								{isLoggingIn
 									? 'Securely login to your Authect'
 									: 'Create your Authect account'}
@@ -76,16 +78,25 @@ const Home = (props: { isMobile: any }) => {
 							</div>
 						)}
 
-						<div className="input_box  flex flex-col space-y-3">
+						<div className="input_box  flex flex-col space-y-3 relative">
 							<label className="body" htmlFor="body">
 								Password
 							</label>
 							<input
-								type="password"
-								className="input_field p-4 font-toma-reg border border-gray-200 rounded-lg"
+								type={passMode}
+								className="input_field  p-4 font-toma-reg border border-gray-200 rounded-lg"
 								placeholder=""
 							/>
-
+							{passMode === 'password' ? (
+								<div role={'button'} title={'Hide pasword'} onClick={() =>setpassMode('text')} className="eyes absolute right-6  bottom-4">
+									<FiEye className="text-2xl" />
+								</div>
+							) : (
+								<div role={'button'} title={'Hide pasword'} onClick={() =>setpassMode('password')}  className="eyes absolute right-6  bottom-4">
+									<FiEyeOff className="text-2xl font-bold" />
+								</div>
+							)}
+							
 							{!isLoggingIn && (
 								<div className="strong-pass">
 									<h1 className="body">
@@ -101,7 +112,7 @@ const Home = (props: { isMobile: any }) => {
 								<p className="body">
 									By registering, you are agreeing to our{' '}
 									<span className="text-light-blue">Terms of Use</span> and
-									<span className="text-light-blue mx-1">Register</span>
+									<span className="text-light-blue mx-1">Privacy Policy</span>
 								</p>
 							)}
 						</div>
@@ -124,25 +135,42 @@ const Home = (props: { isMobile: any }) => {
 								onClick={() => router.push('/dashboard')}
 								className="btn light middle w-full centered"
 							>
-								Log in
+								{isLoggingIn ? "login" : "register"}
 							</button>
 						</motion.div>
 
 						<p className="body w-full text-center">Or contiue with</p>
 
-						<div className="bg-white w-[58px] h-[57px] centered mx-auto">
-							<Image src={google} width={150} height={60} alt="logo" />
+						<div className="bg-white  centered mx-auto">
+							<Image src={google} width={37} height={38} alt="logo" />
 						</div>
 					</div>
 					{/* uth componrnt */}
 
 					{isLoggingIn ? (
 						<h1 className="text-white">
-							Don’t have an account? <strong role={'button'} title={'create an account'} onClick={switchMode} className="text-light-blue">Register</strong>
+							Don’t have an account?{' '}
+							<strong
+								role={'button'}
+								title={'create an account'}
+								onClick={switchMode}
+								className="text-light-blue"
+							>
+								Register
+							</strong>
 						</h1>
 					) : (
 						<h1 className="text-white">
-							Already have an account? <strong  role={'button'} title={'sign in into your account'} onClick={switchMode }  className="text-light-blue">  Logint?</strong>
+							Already have an account?{' '}
+							<strong
+								role={'button'}
+								title={'sign in into your account'}
+								onClick={switchMode}
+								className="text-light-blue"
+							>
+								{' '}
+								Logint?
+							</strong>
 						</h1>
 					)}
 

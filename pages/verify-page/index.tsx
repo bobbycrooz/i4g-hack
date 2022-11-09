@@ -43,7 +43,7 @@ const Verify = (props: { isMobile: any }) => {
 	];
 
 	return (
-		<div className="verify relative">
+		<div className="verify  relative">
 			<SEO title="home" />
 			{/* <Text text="name"/>
 			<Button text='button'/> */}
@@ -78,7 +78,7 @@ const Verify = (props: { isMobile: any }) => {
 			</div>
 
 			{/*  */}
-			<div className="background-partern mt-[80px]  absolute top-0 left-0 w-full h-full flex items-center justify-center">
+			<div className="background-partern   absolute top-[80px] left-0 w-full  flex items-center justify-center">
 				<div className="main_content  p-2 flex flex-col items-center space-y-9">
 					<div className="row_one  flex items-center justify-center">
 						<div className="center_box w-[500px] text-center">

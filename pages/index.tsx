@@ -22,7 +22,7 @@ const Home = (props: { isMobile: any }) => {
 			{/* <Text text="name"/>
 			<Button text='button'/> */}
 
-			<div className="navbar  h-[100px] bg-white flex items-center justify-between px-[105px]">
+			<div className="navbar  h-[80px] bg-white flex items-center justify-between px-[105px]">
 				<div className="logo-box cursor-pointer">
 					<Link href="/">
 						<Image src={LogoAnimate} width={150} height={60} alt="logo" />
