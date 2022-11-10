@@ -38,11 +38,12 @@ function Info({ click, data }: { click: any; data: any }) {
 				<h1 className="big-body capitalize ">Identity Verification</h1>
 
 				<p className="body">
-					Enter your identification information. This is a mandatory process of identifying and
-					verifying the client&apos;s identity and to migrate to a micro or major influencer type.
+					Enter your identification information. This is a mandatory process of identification and
+					verification of your credential in other to guide against identity theft.
+					
 				</p>
 
-				<p className="body">Click on the “Connect to Authect” button to complete your verification.</p>
+				<p className="body">Click on the <strong>“Connect to Authect”</strong> button to complete your verification.</p>
 
 				{/*  */}
 
