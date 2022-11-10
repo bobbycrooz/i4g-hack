@@ -140,11 +140,21 @@ function CreateCampaign({ click, data }: { click: any; data: any }) {
 }
 
 function CampaignCreated({ click }: { click: any }) {
+
+	const [notify, setNotify] = React.useState(false)
+
 	function copyToCB(text: string) {
 		navigator?.clipboard?.writeText(text);
 		console.log('copied to clipboard');
+		setNotify(true)
+
+		setTimeout(() => {
+
+			setNotify(false)
+			
+		},3000);
 		
-		click((p: any) => !p)
+		// click((p: any) => !p)
 	}
 	
 	
@@ -160,7 +170,7 @@ function CampaignCreated({ click }: { click: any }) {
 			<div className="details_box   space-y-4">
 				<h1 className="big-body capitalize text-center">Campaign create Successfully</h1>
 
-				<div className="input_box  flex flex-col space-y-3">
+				<div className="input_box  flex flex-col space-y-3 relative">
 					<label className="body" htmlFor="body">
 						Campaign Code
 					</label>
@@ -169,6 +179,28 @@ function CampaignCreated({ click }: { click: any }) {
 						className="input_field p-4 font-toma-reg border border-gray-200 rounded-lg"
 						placeholder="http://authect.vercel.app/verify-page "
 					/>
+
+					{notify && (
+						<motion.div 
+						initial={{
+							scale:0.4,
+							opacity: 0
+						}}
+						animate={{
+							scale:1,
+							
+							opacity: 1
+						}}
+						transition={{
+							duration: 0.2
+						}}
+						
+						className="info  bg-green-400 rounded-lg shadow-md right-0 p-2 px-4 bottom-0">
+							<p className="text-lg text-white w-full text-center">
+								Copied link to clipboard
+							</p>
+						</motion.div>
+					)}
 				</div>
 				{/*  */}
 
