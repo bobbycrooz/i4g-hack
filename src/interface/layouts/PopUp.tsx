@@ -42,41 +42,21 @@ function CreateCampaign({ click, data }: { click: any; data: any }) {
 			<div className="details_box   space-y-4">
 				<h1 className="big-body capitalize ">create capmpaign</h1>
 
+
+				{/*  */}
 				<div className="input_box  flex flex-col space-y-3">
 					<label className="body" htmlFor="body">
-						Campaign type
+					Campaign type
 					</label>
-					<div
-						onClick={() => setIdShow(!showIdDropDown)}
-						onChange={() => true}
-						className="input_field-select p-4 cursor-pointer middle justify-between font-toma-reg border border-gray-200 rounded-lg"
-						placeholder="Select ID Type"
-					>
-						<p className="fade text-gray-300">{IDType}</p>
-
-						<Image src={arrowDown} width={21.33} height={21} alt="logo" />
-
-						{showIdDropDown && (
-							<div className="dropdown ">
-								<div className="dropdown_list-wrapper">
-									<ul className="dropdown_list p-4">
-										{IdTypeArray.map((item, index) => (
-											<li
-												onClick={() => setID(item)}
-												key={index}
-												className="list_item text-sm capitalize border-b"
-											>
-												{item}
-											</li>
-										))}
-									</ul>
-								</div>
-							</div>
-						)}
-					</div>
+					<input
+						type="text"
+						className="input_field p-4 font-toma-reg border border-gray-200 rounded-lg"
+						placeholder="Enter Campaign type"
+					/>
 				</div>
 
 				{/*  */}
+
 
 				<div className="input_box  flex flex-col space-y-3">
 					<label className="body" htmlFor="body">
@@ -85,7 +65,7 @@ function CreateCampaign({ click, data }: { click: any; data: any }) {
 					<input
 						type="text"
 						className="input_field p-4 font-toma-reg border border-gray-200 rounded-lg"
-						placeholder="Enter Campaign "
+						placeholder="Enter Campaign name"
 					/>
 				</div>
 				{/*  */}
