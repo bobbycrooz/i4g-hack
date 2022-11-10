@@ -78,6 +78,7 @@ const Home = (props: { isMobile: any }) => {
 							</div>
 						)}
 
+						{/* password field */}
 						<div className="input_box  flex flex-col space-y-3 relative">
 							<label className="body" htmlFor="body">
 								Password
@@ -88,15 +89,25 @@ const Home = (props: { isMobile: any }) => {
 								placeholder=""
 							/>
 							{passMode === 'password' ? (
-								<div role={'button'} title={'Hide pasword'} onClick={() =>setpassMode('text')} className="eyes absolute right-6  bottom-4">
-									<FiEye className="text-2xl" />
+								<div
+									role={'button'}
+									title={'Hide pasword'}
+									onClick={() => setpassMode('text')}
+									className={`top-[45px] eyes absolute right-6  `}
+								>
+									<FiEye className="text-2xl text-gray-400" />
 								</div>
 							) : (
-								<div role={'button'} title={'Hide pasword'} onClick={() =>setpassMode('password')}  className="eyes absolute right-6  bottom-4">
-									<FiEyeOff className="text-2xl font-bold" />
+								<div
+									role={'button'}
+									title={'Hide pasword'}
+									onClick={() => setpassMode('password')}
+									className="eyes absolute right-6 top-[45px]"
+								>
+									<FiEyeOff className="text-2xl text-gray-400" />
 								</div>
 							)}
-							
+
 							{!isLoggingIn && (
 								<div className="strong-pass">
 									<h1 className="body">
@@ -106,6 +117,7 @@ const Home = (props: { isMobile: any }) => {
 								</div>
 							)}
 						</div>
+						{/* password field */}
 
 						<div className="">
 							{!isLoggingIn && (
@@ -135,7 +147,7 @@ const Home = (props: { isMobile: any }) => {
 								onClick={() => router.push('/dashboard')}
 								className="btn light middle w-full centered"
 							>
-								{isLoggingIn ? "login" : "register"}
+								{isLoggingIn ? 'login' : 'register'}
 							</button>
 						</motion.div>
 

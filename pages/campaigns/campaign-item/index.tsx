@@ -60,10 +60,10 @@ const DashBoard = (props: { isMobile: any }) => {
 
 			<div className="py-2 middle mt-16">
 				<Link href={'/campaigns'}>
-					<p className="body pr-4">Employee Authentication </p>
+					<p className="text-black font-toma-reg text-xl  font-regular pr-4">Employee Authentication </p>
 				</Link>
 				<Image src={arrowRight2} width={9.7} height={16.5} alt="logo" />
-				<p className="text-black font-toma-sb pl-4 font-semibold">Teachers Authentication</p>
+				<p className="text-black font-toma-sb pl-4 text-xl  font-semibold">Teachers Authentication</p>
 			</div>
 
 			<div className="campain_table w-full mt-6">

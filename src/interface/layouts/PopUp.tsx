@@ -21,10 +21,14 @@ const transObj = {
 	exit: { opacity: 0, x: 100 }
 };
 
+
+
 function CreateCampaign({ click, data }: { click: any; data: any }) {
-	const { verificationType, setVT,setID,IDType } = data;
+	const { verificationType, setVT, setID, IDType } = data;
 	const [showDropDown, setShow] = React.useState(false);
 	const [showIdDropDown, setIdShow] = React.useState(false);
+
+	const IdTypeArray = ['bvn', 'nin', 'national passport', 'voters card', 'driver license'];
 
 	return (
 		<motion.div
@@ -40,7 +44,7 @@ function CreateCampaign({ click, data }: { click: any; data: any }) {
 
 				<div className="input_box  flex flex-col space-y-3">
 					<label className="body" htmlFor="body">
-						Campaign  type
+						Campaign type
 					</label>
 					<div
 						onClick={() => setIdShow(!showIdDropDown)}
@@ -56,19 +60,15 @@ function CreateCampaign({ click, data }: { click: any; data: any }) {
 							<div className="dropdown ">
 								<div className="dropdown_list-wrapper">
 									<ul className="dropdown_list p-4">
-										{Array(8)
-											.fill(1)
-											.map((item, index) => (
-												<li
-													onClick={() =>
-														setID('Bvn')
-													}
-													key={index}
-													className="list_item text-sm  border-b"
-												>
-													BVN
-												</li>
-											))}
+										{IdTypeArray.map((item, index) => (
+											<li
+												onClick={() => setID(item)}
+												key={index}
+												className="list_item text-sm capitalize border-b"
+											>
+												{item}
+											</li>
+										))}
 									</ul>
 								</div>
 							</div>
@@ -108,19 +108,15 @@ function CreateCampaign({ click, data }: { click: any; data: any }) {
 							<div className="dropdown ">
 								<div className="dropdown_list-wrapper">
 									<ul className="dropdown_list p-4">
-										{Array(8)
-											.fill(1)
-											.map((item, index) => (
-												<li
-													onClick={() =>
-														setVT('International Passport')
-													}
-													key={index}
-													className="list_item text-sm  border-b"
-												>
-													BVN
-												</li>
-											))}
+										{IdTypeArray.map((item, index) => (
+											<li
+												onClick={() => setVT(item)}
+												key={index}
+												className="list_item text-sm capitalize border-b"
+											>
+												{item}
+											</li>
+										))}
 									</ul>
 								</div>
 							</div>
@@ -144,6 +140,14 @@ function CreateCampaign({ click, data }: { click: any; data: any }) {
 }
 
 function CampaignCreated({ click }: { click: any }) {
+	function copyToCB(text: string) {
+		navigator?.clipboard?.writeText(text);
+		console.log('copied to clipboard');
+		
+		click((p: any) => !p)
+	}
+	
+	
 	return (
 		<motion.div
 			variants={transObj}
@@ -163,14 +167,14 @@ function CampaignCreated({ click }: { click: any }) {
 					<input
 						type="email"
 						className="input_field p-4 font-toma-reg border border-gray-200 rounded-lg"
-						placeholder="http://skjskjbakbkba/ "
+						placeholder="http://authect.vercel.app/verify-page "
 					/>
 				</div>
 				{/*  */}
 
 				<div className="button_box w-full">
 					<button
-						onClick={(p) => click((p: any) => !p)}
+						onClick={(p) => copyToCB('http://authect.vercel.app/verify-page')}
 						className="btn light middle w-full centered"
 					>
 						Copy Campaign Code
@@ -192,19 +196,19 @@ const PopUp = ({ setshowPopUp }: { setshowPopUp: any }) => {
 
 	function backDrop(e: React.MouseEvent<HTMLDivElement, MouseEvent>) {
 		// console.log( cardRef.current);
-
 		if (cardRef?.current && e?.target === cardRef.current) {
 			setshowPopUp(false);
 		}
-
 		return;
 	}
+
+	
 
 	return (
 		<div className="popup fixed flex centered " ref={cardRef} onClick={(e) => backDrop(e)}>
 			<AnimatePresence mode="wait">
 				{isCreating ? (
-					<CreateCampaign data={{ verificationType, setVT,IDType, setID }} click={seIsCreating} />
+					<CreateCampaign data={{ verificationType, setVT, IDType, setID }} click={seIsCreating} />
 				) : (
 					<CampaignCreated click={seIsCreating} />
 				)}

@@ -28,19 +28,19 @@ const DashBoardLayout = ({ children }) => {
 	const sideNav = [
 		{
 			name: 'home',
-			link: './dashboard',
+			link: '/dashboard',
 			icon: home
 		},
 
 		{
 			name: 'Campaign',
-			link: './verify-page',
+			link: '/campaigns',
 			icon: home
 		},
 
 		{
 			name: 'Settings',
-			link: './campaigns',
+			link: '/dashboard',
 			icon: cog
 		}
 	];
@@ -48,10 +48,7 @@ const DashBoardLayout = ({ children }) => {
 	return (
 		<div className="dashboard relative flex">
 			<SEO title="dashboard" />
-			{/* <Text text="name"/>
-			<Button text='button'/> */}
-			{/* modal */}
-			{/* modal */}
+	
 			{showPopUp && <PopUp setshowPopUp={setshowPopUp} />}
 
 			<div className="dashboard_side py-14 px-8 flex flex-col justify-between">
