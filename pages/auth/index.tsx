@@ -19,7 +19,7 @@ const Auth = (props: { isMobile: any }) => {
 	const router = useRouter();
 	const [isLoggingIn, setMode] = React.useState(true);
 	const [passMode, setpassMode] = React.useState('password');
-	const [notify, setNotify] = React.useState<NotifyTypes>({
+	const [notify, setNotify] = React.useState({
 		type: 'error',
 		message: ''
 	});
