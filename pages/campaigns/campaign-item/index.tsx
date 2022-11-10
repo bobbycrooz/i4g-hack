@@ -46,8 +46,13 @@ const DashBoard = (props: { isMobile: any }) => {
 
 	const tableHaeders = [' name', 'verification type', 'date', 'status'];
 	const tableRows = [
-		['Hannah', 'BVN', '12-110-2022', 'verified'],
-		['bobby', 'voters-card', '12-110-2022', 'view']
+		['Marvin jude', 'BVN', '12-110-2022', 'verified'],
+		['Asake', 'NIN', '12-110-2022', 'verified'],
+		['Akanni', 'NIN', '12-110-2022', 'Unverified'],
+		['Mr. toni', 'National passport', '12-110-2022', 'verified'],
+		['bobby-dev', 'NIN', '12-110-2022', 'verified'],
+		['Hannah', 'BVN', '12-110-2022', 'Unverified'],
+		['bobby', 'voters-card', '12-110-2022', 'Unverified'],
 	];
 
 	return (

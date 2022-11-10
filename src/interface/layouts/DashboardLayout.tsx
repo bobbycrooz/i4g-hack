@@ -53,7 +53,7 @@ const DashBoardLayout = ({ children }) => {
 
 			<div className="dashboard_side py-14 px-8 flex flex-col justify-between">
 				<div className="first_tab space-y-8">
-					<Link href={'/'} className="logo-box cursor-pointer">
+					<Link href='/' className="logo-box cursor-pointer">
 						<Image src={Logo} width={150} height={60} alt="logo" />
 					</Link>
 

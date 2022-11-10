@@ -47,7 +47,13 @@ const DashBoard = (props: { isMobile: any }) => {
 	const tableHaeders = ['campaign name', 'verification type', 'name', 'status'];
 	const tableRows = [
 		['Employee Authentication', '	Teachers Authentication', '12-110-2022', 'view'],
-		['Employee Authentication', 'voters-card', '12-110-2022', 'view']
+		['Comapany campaign', 'Business admins', '12-110-2022', 'view'],
+		['developers Authentication', 'frontend devs', '12-110-2022', 'view'],
+		['Employee Authentication', 'Non-staff', '12-110-2022', 'view'],
+		['Admin Authentication', 'Non-staff', '12-110-2022', 'view'],
+		['Doctors Authentication', 'Nurses', '12-110-2022', 'view'],
+		['Business Authentication', 'Merchant', '12-110-2022', 'view'],
+		['Employee Authentication', 'Non-staff', '12-110-2022', 'view']
 	];
 
 	return (

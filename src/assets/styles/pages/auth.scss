@@ -7,10 +7,25 @@
         background-image: url(../../images/bg-pat.svg);
         background-size: cover;
         background-repeat: no-repeat;
+        @apply absolute top-0 left-0 w-full h-full flex items-center justify-center ;
+   
+        .main_content{
+            @apply p-2 flex flex-col items-center space-y-9 ;
+        }
+
+        .auth_card{
+            @apply space-y-11 bg-white px-24 py-16 h-auto w-[778px] rounded-lg ;
+       
+
+            .logIn{
+                @apply  text-black font-bold text-[32px] ;
+            }
+       
+        }
     }
 
     &.active{
-        height: 160vh;
+        height: 150vh;
     }
 
     input {

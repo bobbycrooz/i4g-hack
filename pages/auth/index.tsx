@@ -11,19 +11,60 @@ import { motion } from 'framer-motion';
 import { useRouter } from 'next/router';
 import React from 'react';
 import { FiEye, FiEyeOff } from 'react-icons/fi';
+import { validateField } from './validate';
 
-const Home = (props: { isMobile: any }) => {
-	const { user, setUser } = useAuth();
+const Auth = (props: { isMobile: any }) => {
+	// hooks
 	let slackname = 'obby dev';
 	const router = useRouter();
 	const [isLoggingIn, setMode] = React.useState(true);
 	const [passMode, setpassMode] = React.useState('password');
+	const [notify, setNotify] = React.useState<NotifyTypes>({
+		type: 'error',
+		message: ''
+	});
+	const [isLoading, seIsLoading] = React.useState(false);
+	const [user, setUser] = React.useState<UserTypes>({});
+	const [errMsg, setErrMsg] = React.useState('');
+	const { push } = useRouter();
+	// hooks
 
+	// handlers
+	function Notify(type: 'success' | 'error', message: string) {
+		return setNotify({
+			...notify,
+			type: type,
+			message: message
+		});
+	}
+
+
+
+	function getUserDetails(e: any, fieldName: string) {
+		let fieldValue = e && e.target.value;
+
+		Notify('error', '');
+
+		let { valid, errMsg } = validateField(fieldName, fieldValue);
+
+		if (errMsg) {
+			return Notify('error', errMsg);
+		}
+
+		valid &&
+			setUser({
+				...user,
+				[fieldName]: fieldValue
+			});
+	}
+	// handlers
+
+
+	// functions
 	function switchMode() {
 		setMode(!isLoggingIn);
 		window.scrollTo({
 			top: 0,
-			// left: 100,
 			behavior: 'smooth'
 		});
 	}
@@ -31,18 +72,16 @@ const Home = (props: { isMobile: any }) => {
 	return (
 		<div className={`auth ${isLoggingIn && 'active'} relative`}>
 			<SEO title="auth" />
-			{/* <Text text="name"/>
-			<Button text='button'/> */}
 
-			<div className="background-partern absolute top-0 left-0 w-full h-full flex items-center justify-center">
-				<div className="main_content  p-2 flex flex-col items-center space-y-9">
+			<div className="background-partern ">
+				<div className="main_content">
 					<Image src={Logo} width={150} height={60} alt="logo" />
 
 					{/* uth componrnt */}
 
-					<div className="auth_card space-y-11 bg-white px-24 py-16 h-auto w-[778px] rounded-lg">
+					<div className="auth_card ">
 						<div className="text-center">
-							<h1 className="logIn text-black font-bold text-[32px]">
+							<h1 className="logIn">
 								{isLoggingIn ? 'Login to your account' : 'Create your account'}
 							</h1>
 
@@ -60,6 +99,7 @@ const Home = (props: { isMobile: any }) => {
 							</label>
 							<input
 								type="email"
+								onChange={(e) => getUserDetails(e,'email')}
 								className="input_field p-4 font-toma-reg border border-gray-200 rounded-lg"
 								placeholder="Enter your email address"
 							/>
@@ -72,6 +112,7 @@ const Home = (props: { isMobile: any }) => {
 								</label>
 								<input
 									type="phone"
+									onChange={(e) => getUserDetails(e,'phone')}
 									className="input_field p-4 font-toma-reg border border-gray-200 rounded-lg"
 									placeholder="Please enter your phone number"
 								/>
@@ -85,6 +126,7 @@ const Home = (props: { isMobile: any }) => {
 							</label>
 							<input
 								type={passMode}
+								onChange={(e) => getUserDetails(e,'password')}
 								className="input_field  p-4 font-toma-reg border border-gray-200 rounded-lg"
 								placeholder=""
 							/>
@@ -193,4 +235,4 @@ const Home = (props: { isMobile: any }) => {
 	);
 };
 
-export default Home;
+export default Auth;
